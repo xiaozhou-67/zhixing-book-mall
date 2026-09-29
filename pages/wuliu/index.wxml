@@ -1,0 +1,69 @@
+<view class="container222">
+    <!-- 顶部物流信息卡片 -->
+    <view class="top-header">
+        <view class="header-card">
+            <view class="header-content">
+                <view class="header-icon">
+                    <view class="icon-truck">🚚</view>
+                </view>
+                <view class="header-info">
+                    <view class="info-row">
+                        <view class="info-label">物流单号</view>
+                        <view class="info-value">{{ trackingNumber }}</view>
+                    </view>
+                    <view class="info-row">
+                        <view class="info-label">物流公司</view>
+                        <view class="info-value">{{ shipperName }}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 包裹内商品信息 -->
+    <view wx:if="{{ packageGoods && packageGoods.length > 0 }}" class="package-goods-container">
+        <view class="package-goods-header">
+            <view class="package-goods-title">包裹商品</view>
+            <view class="package-goods-count">共{{ packageGoods.length }}件商品</view>
+        </view>
+        <view class="package-goods-list">
+            <view class="package-goods-item" wx:for="{{ packageGoods }}" wx:key="index">
+                <image class="goods-thumb" src="{{ item.pic }}" mode="aspectFill"></image>
+                <view class="goods-info">
+                    <view class="goods-name">{{ item.goodsName }}</view>
+                    <view class="goods-property" wx:if="{{ item.property }}">{{ item.property }}</view>
+                    <view class="goods-number">x{{ item.number }}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 物流轨迹时间轴（有轨迹数据时才展示） -->
+    <view wx:if="{{ logisticsTraces && logisticsTraces.length > 0 }}" class="timeline-container">
+        <view class="timeline-header">
+            <view class="timeline-title">物流轨迹</view>
+            <view class="timeline-subtitle">Package Tracking</view>
+        </view>
+
+        <view class="timeline-content">
+            <view class="timeline-item {{index === 0 ? 'timeline-item-active' : ''}}" wx:for="{{logisticsTraces}}" wx:key="index">
+                <!-- 时间轴节点 -->
+                <view class="timeline-node">
+                    <view class="node-wrapper">
+                        <view class="node-dot {{index === 0 ? 'node-dot-active' : ''}}">
+                            <view class="dot-inner" wx:if="{{index === 0}}"></view>
+                        </view>
+                        <view class="node-line" wx:if="{{index !== logisticsTraces.length - 1}}"></view>
+                    </view>
+                </view>
+
+                <!-- 内容卡片 -->
+                <view class="timeline-card">
+                    <view class="card-time">{{item.AcceptTime}}</view>
+                    <view class="card-content">{{item.AcceptStation}}</view>
+                    <view class="card-badge" wx:if="{{index === 0}}">最新</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

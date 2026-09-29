@@ -1,0 +1,248 @@
+page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+.goods-btn {
+  position: absolute;
+  right: 32rpx;
+  bottom: 32rpx;
+}
+.category-container {
+  width: 180rpx;
+  height: 100%;
+}
+.goods-container {
+  flex: 1;
+  height: 100%;
+}
+
+.medium-category {
+  margin: 32rpx 0;
+}
+.medium-category .line {
+  width:60rpx;
+}
+.medium-category .txt {
+  color: #333;
+}
+.small-category-box {
+  width: 570rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.small-category {
+  width: 147rpx;
+  margin-top: 32rpx;
+  margin-left: 32rpx;
+}
+.small-category image {
+  width: 147rpx;
+  height: 147rpx;
+}
+.small-category view {
+  text-align: center;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.llargada{
+  width: 590rpx!important;
+}
+.sidebar-l {
+  width: 190rpx !important;
+}
+.adPosition {
+  width: 100%;
+}
+.title-class-apifm {
+  word-break: break-all;
+}
+
+/* categorySecondPos == 1：左侧自定义展开折叠 sidebar */
+.sidebar-item {
+  position: relative;
+  padding: 28rpx 16rpx;
+  font-size: 26rpx;
+  color: #333;
+  text-align: left;
+  background: #f7f7f7;
+  border-bottom: 1rpx solid #eee;
+}
+.sidebar-item-active {
+  background: #fff;
+  color: #e64340;
+  font-weight: bold;
+}
+.sidebar-item-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6rpx;
+  background: #e64340;
+  border-radius: 0 4rpx 4rpx 0;
+}
+.sidebar-item-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1.4;
+  word-break: break-all;
+}
+.sidebar-item-arrow {
+  flex-shrink: 0;
+  margin-left: 4rpx;
+  font-size: 28rpx;
+  color: #999;
+  display: inline-block;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+.sidebar-item-active .sidebar-item-arrow {
+  color: #e64340;
+}
+.sidebar-item-arrow-open {
+  transform: rotate(90deg);
+}
+.second-category-list {
+  margin-top: 12rpx;
+}
+.second-category-item {
+  padding: 16rpx 8rpx;
+  font-size: 24rpx;
+  color: #666;
+  font-weight: normal;
+  border-top: 1rpx solid #f0f0f0;
+  background: #fafafa;
+}
+.second-category-item-active {
+  color: #e64340;
+  background: #fff5f5;
+}
+
+/* ========== 商品价格组件 ========== */
+.cat-price-block {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+
+/* 免费徽章 */
+.cat-price-free-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #FF6B6B 0%, #E4393C 100%);
+  color: #FFFFFF;
+  font-size: 24rpx;
+  font-weight: bold;
+  padding: 2rpx 16rpx;
+  border-radius: 18rpx;
+  letter-spacing: 2rpx;
+  box-shadow: 0 3rpx 10rpx rgba(228, 57, 60, 0.35);
+}
+
+/* 金额区域 */
+.cat-price-money-wrap {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.cat-price-symbol {
+  font-size: 22rpx;
+  font-weight: bold;
+  color: #E4393C;
+  margin-right: 2rpx;
+}
+
+.cat-price-main {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #E4393C;
+  line-height: 1;
+}
+
+/* 划线原价 */
+.cat-price-del {
+  font-size: 22rpx;
+  color: #bbb;
+  text-decoration: line-through;
+  margin-left: 8rpx;
+  align-self: flex-end;
+  padding-bottom: 3rpx;
+}
+
+/* 积分块 */
+.cat-price-score-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  background: linear-gradient(135deg, #FFF8EC 0%, #FFF3DC 100%);
+  border: 2rpx solid #F0B840;
+  border-radius: 8rpx;
+  padding: 3rpx 12rpx;
+}
+
+.cat-price-score-num {
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 1;
+  background: linear-gradient(135deg, #E8971A 0%, #C87800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cat-price-score-unit {
+  font-size: 20rpx;
+  font-weight: bold;
+  color: #C87800;
+  margin-left: 3rpx;
+  align-self: flex-end;
+  padding-bottom: 2rpx;
+}
+
+/* 金额 + 积分 组合行 */
+.cat-price-combo-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6rpx;
+  flex-wrap: wrap;
+}
+
+.cat-price-plus {
+  font-size: 22rpx;
+  color: #aaa;
+  font-weight: bold;
+  align-self: center;
+}
+/* ========== 商品价格组件结束 ========== */
+
+/* ===== 年级筛选条(图书教辅专用) ===== */
+.grade-filter {
+  white-space: nowrap;
+  padding: 16rpx 20rpx 8rpx;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.grade-chip {
+  display: inline-block;
+  padding: 8rpx 28rpx;
+  margin-right: 16rpx;
+  font-size: 24rpx;
+  color: #666;
+  background: #f5f6f7;
+  border-radius: 28rpx;
+}
+.grade-chip-active {
+  color: #fff;
+  background: #e64340;
+}

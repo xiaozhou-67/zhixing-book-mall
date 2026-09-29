@@ -1,0 +1,26 @@
+{
+  "name": "zhixing-book-mall",
+  "version": "1.0.0",
+  "description": "知行书城：图书零售 + 中学生教辅资料专用微信小程序商城",
+  "main": "app.js",
+  "dependencies": {
+    "@vant/weapp": "^1.11.7",
+    "apifm-wxapi": "^26.9.27",
+    "dayjs": "^1.11.19",
+    "mp-html": "^2.5.2",
+    "wxa-plugin-canvas": "^1.1.12",
+    "wxbarcode": "^1.0.2"
+  },
+  "scripts": {
+    "test": "python tools/static_check.py"
+  },
+  "keywords": [
+    "书城",
+    "图书",
+    "教辅",
+    "微信小程序",
+    "商城"
+  ],
+  "author": "Changqing Zhou <zcq@njfu.edu.cn>",
+  "license": "MIT"
+}

@@ -1,0 +1,105 @@
+<!-- 搜索栏 -->
+<van-sticky>
+  <view class="search-container">
+    <van-search value="{{ value }}" placeholder="搜索购买过的商品" bind:search="search2" bind:clear="search3" shape="round" />
+  </view>
+
+  <!-- 筛选条件 -->
+  <view class="filters-wrapper">
+    <view class="filters">
+      <view class="filter-item">
+        <picker bindchange="categoryChange" value="{{ categoryIndex }}" range="{{ categories }}" range-key="name">
+          <view class="picker-content {{categoryIndex != -1 ? 'active' : ''}}">
+            <text class="picker-icon">📦</text>
+            <text class="picker-text">{{ categoryIndex == -1 ? '全部分类' : categories[categoryIndex].name }}</text>
+            <text class="picker-arrow">▼</text>
+          </view>
+        </picker>
+      </view>
+      <view class="filter-divider"></view>
+      <view class="filter-item">
+        <picker bindchange="dayChange" value="{{ dayIndex }}" range="{{ dayArray }}">
+          <view class="picker-content {{dayIndex != -1 ? 'active' : ''}}">
+            <text class="picker-icon">⏰</text>
+            <text class="picker-text">{{ dayIndex == -1 ? '全部时间' : dayArray[dayIndex] }}</text>
+            <text class="picker-arrow">▼</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+</van-sticky>
+
+<!-- 空状态：loaded 后才显示，防止闪烁 -->
+<view wx:if="{{ loaded && (!goods || goods.length == 0) }}" class="empty-container">
+  <view class="empty-content">
+    <view class="empty-icon">🛍️</view>
+    <view class="empty-text">暂无购买记录</view>
+    <view class="empty-tip">快去逛逛吧～</view>
+    <navigator url="/pages/index/index" open-type="switchTab" class="empty-btn">去首页看看</navigator>
+  </view>
+</view>
+
+<!-- 商品列表 -->
+<view class="goods-container" wx:if="{{ goods && goods.length > 0 }}">
+  <view class="list2-box">
+    <view class="list2" wx:for="{{goods}}" wx:key="id" wx:for-index="idx">
+
+      <!-- 商品图片 -->
+      <navigator url="/pages/goods-details/index?id={{ item.goodsId }}" class="goods-card">
+        <view class="img-wrapper">
+          <image class="img" mode="aspectFill" src="{{item.pic}}" lazy-load></image>
+          <view class="viewed-badge">已购</view>
+        </view>
+
+        <!-- 商品信息 -->
+        <view class="goods-info">
+          <view class="title">{{item.goodsName}}</view>
+          <view class="price-section">
+            <view class="sales-info" wx:if="{{item.numberSells}}">
+              <text>{{item.numberSells}}人付款</text>
+            </view>
+          </view>
+          <view class="tags" wx:if="{{item.dateAdd}}">
+            <view class="tag">
+              <text class="tag-text">{{item.dateAdd}}</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+
+      <!-- 底部操作栏 -->
+      <view class="card-actions">
+        <!-- 再看看 -->
+        <navigator url="/pages/goods-details/index?id={{ item.goodsId }}" class="action-btn look-btn">
+          <text>再看看</text>
+        </navigator>
+        <!-- 加入购物车 -->
+        <view class="action-btn add-cart-btn" data-idx="{{idx}}" bindtap="addShopCar">
+          <image class="cart-action-icon" src="/images/icon/car.svg"></image>
+          <view wx:if="{{item.cartNum && item.cartNum > 0}}" class="action-badge">
+            {{item.cartNum > 99 ? '99+' : item.cartNum}}
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <!-- 底部加载状态 -->
+  <view class="load-more">
+    <text wx:if="{{noMore}}" class="load-more-text">已加载全部记录</text>
+    <text wx:else class="load-more-text load-more-hint">上拉加载更多</text>
+  </view>
+</view>
+
+<!-- 右下角浮动购物车 -->
+<view class="float-cart" bindtap="goToCart">
+  <image class="float-cart-icon" src="/images/icon/car.svg"></image>
+  <view wx:if="{{totalCartNum && totalCartNum > 0}}" class="float-cart-badge">
+    {{totalCartNum > 99 ? '99+' : totalCartNum}}
+  </view>
+</view>
+
+<!-- SKU 选择弹窗 -->
+<goods-pop skuCurGoodsBaseInfo="{{ skuCurGoods }}" bind:addCartSuccess="onAddCartSuccess" />

@@ -1,0 +1,217 @@
+/* 知行书城 - 首页样式
+   配色: 主题红 #e64340, 墨色 #333, 灰 #999, 浅灰 #f5f6f7 */
+
+.page-home {
+  min-height: 100vh;
+  background: #f5f6f7;
+  padding-bottom: 40rpx;
+}
+
+/* ===== 搜索栏 ===== */
+.search-bar {
+  padding: 16rpx 24rpx;
+  background: #fff;
+}
+.search-input {
+  display: flex;
+  align-items: center;
+  height: 64rpx;
+  padding: 0 24rpx;
+  border-radius: 32rpx;
+  background: #f5f6f7;
+}
+.search-placeholder {
+  margin-left: 12rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* ===== 公告 ===== */
+.notice-bar {
+  margin: 16rpx 24rpx 0;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+/* ===== 轮播 ===== */
+.banner-swiper {
+  height: 300rpx;
+  margin: 16rpx 24rpx 0;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+.banner-img {
+  width: 100%;
+  height: 300rpx;
+}
+
+/* ===== 金刚区 ===== */
+.nav-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 16rpx 24rpx 0;
+  padding: 24rpx 0 8rpx;
+  background: #fff;
+  border-radius: 16rpx;
+}
+.nav-item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rpx 0 20rpx;
+}
+.nav-label {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #333;
+}
+
+/* ===== 会员横幅 ===== */
+.vip-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16rpx 24rpx 0;
+  padding: 24rpx 28rpx;
+  border-radius: 16rpx;
+  background: linear-gradient(90deg, #f7e6c3 0%, #f0d194 100%);
+}
+.vip-left {
+  display: flex;
+  align-items: center;
+}
+.vip-texts {
+  margin-left: 16rpx;
+}
+.vip-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #3d2b1f;
+}
+.vip-desc {
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: #7a5c3e;
+}
+.vip-btn {
+  padding: 10rpx 28rpx;
+  font-size: 24rpx;
+  color: #fff;
+  background: #3d2b1f;
+  border-radius: 32rpx;
+}
+
+/* ===== 通用 Section ===== */
+.section {
+  margin: 24rpx 24rpx 0;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+.section-more {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* ===== 新书推荐 ===== */
+.recommend-scroll {
+  white-space: nowrap;
+  width: 100%;
+}
+.recommend-item {
+  display: inline-block;
+  width: 220rpx;
+  margin-right: 20rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
+  vertical-align: top;
+}
+.recommend-pic {
+  width: 220rpx;
+  height: 220rpx;
+}
+.recommend-name {
+  padding: 12rpx 16rpx 4rpx;
+  font-size: 24rpx;
+  color: #333;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  min-height: 68rpx;
+}
+.recommend-price {
+  display: flex;
+  align-items: baseline;
+  padding: 0 16rpx 16rpx;
+  color: #e64340;
+}
+.price-symbol {
+  font-size: 22rpx;
+}
+.price-num {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.price-score {
+  margin-left: 8rpx;
+  font-size: 20rpx;
+  color: #ff9900;
+}
+
+/* ===== 热销榜单 ===== */
+.hot-goods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.hot-item {
+  width: 338rpx;
+  margin-bottom: 20rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+.hot-pic {
+  width: 338rpx;
+  height: 338rpx;
+}
+.hot-name {
+  padding: 12rpx 16rpx 0;
+  font-size: 26rpx;
+  color: #333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  min-height: 76rpx;
+}
+.hot-desc {
+  padding: 6rpx 16rpx 0;
+  font-size: 22rpx;
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hot-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8rpx 16rpx 16rpx;
+}
+.hot-sold {
+  font-size: 20rpx;
+  color: #999;
+}

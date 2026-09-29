@@ -1,0 +1,85 @@
+<!-- 知行书城 首页 -->
+<view class="page-home">
+  <!-- 顶部搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input" bind:tap="goSearch">
+      <van-icon name="search" size="16px" color="#999" />
+      <text class="search-placeholder">搜书名 / 年级学科 / 教辅类型</text>
+    </view>
+  </view>
+
+  <!-- 公告 -->
+  <van-notice-bar wx:if="{{ notice }}" left-icon="bullhorn-o" text="{{ notice.title }}" custom-class="notice-bar" bind:click="goNotice" />
+
+  <!-- 轮播图 -->
+  <swiper wx:if="{{ banners && banners.length > 0 }}" class="banner-swiper" indicator-dots autoplay circular interval="4000" duration="500">
+    <swiper-item wx:for="{{ banners }}" wx:key="id">
+      <image class="banner-img" src="{{ item.pic }}" mode="aspectFill" data-item="{{ item }}" bind:tap="onBannerTap" />
+    </swiper-item>
+  </swiper>
+
+  <!-- 金刚区 -->
+  <view class="nav-grid">
+    <view class="nav-item" wx:for="{{ navItems }}" wx:key="key" data-item="{{ item }}" bind:tap="onNavTap">
+      <van-icon name="{{ item.icon }}" size="26px" color="#e64340" />
+      <text class="nav-label">{{ item.label }}</text>
+    </view>
+  </view>
+
+  <!-- 会员横幅 -->
+  <view class="vip-banner" bind:tap="goVip">
+    <view class="vip-left">
+      <van-icon name="vip-card-o" size="22px" color="#3d2b1f" />
+      <view class="vip-texts">
+        <view class="vip-title">知行 VIP 会员</view>
+        <view class="vip-desc">会员专享价 · 免单券 · 购书双倍积分</view>
+      </view>
+    </view>
+    <view class="vip-btn">立即开通</view>
+  </view>
+
+  <!-- 新书推荐(横向滚动) -->
+  <view class="section" wx:if="{{ goodsRecommend }}">
+    <view class="section-header">
+      <view class="section-title">新书推荐</view>
+      <view class="section-more" bind:tap="goCategory">全部商品 ›</view>
+    </view>
+    <scroll-view class="recommend-scroll" scroll-x enable-flex>
+      <view class="recommend-item" wx:for="{{ goodsRecommend }}" wx:key="id" data-id="{{ item.id }}" bind:tap="toDetail">
+        <image class="recommend-pic" src="{{ item.pic }}" mode="aspectFill" />
+        <view class="recommend-name">{{ item.name }}</view>
+        <view class="recommend-price">
+          <text class="price-symbol">¥</text>
+          <text class="price-num">{{ item.minPrice }}</text>
+          <text wx:if="{{ item.minScore > 0 }}" class="price-score">+{{ item.minScore }}积分</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 热销榜单(两列瀑布) -->
+  <view class="section" wx:if="{{ hotGoods }}">
+    <view class="section-header">
+      <view class="section-title">热销榜单</view>
+      <van-icon name="fire" size="18px" color="#e64340" />
+    </view>
+    <view class="hot-goods">
+      <view class="hot-item" wx:for="{{ hotGoods }}" wx:key="id" data-id="{{ item.id }}" bind:tap="toDetail">
+        <image class="hot-pic" src="{{ item.pic }}" mode="aspectFill" />
+        <view class="hot-name">{{ item.name }}</view>
+        <view wx:if="{{ item.characteristic }}" class="hot-desc">{{ item.characteristic }}</view>
+        <view class="hot-bottom">
+          <view class="recommend-price">
+            <text class="price-symbol">¥</text>
+            <text class="price-num">{{ item.minPrice }}</text>
+            <text wx:if="{{ item.minScore > 0 }}" class="price-score">+{{ item.minScore }}积分</text>
+          </view>
+          <view class="hot-sold" wx:if="{{ show_seller_number == '1' }}">已售{{ item.numberSells || 0 }}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空态 -->
+  <van-empty wx:if="{{ !goodsRecommend && !hotGoods }}" description="书店正在补货中,请稍后再来~" />
+</view>

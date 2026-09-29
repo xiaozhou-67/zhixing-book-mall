@@ -1,0 +1,18 @@
+# Documentation (local only)
+docs/
+
+# WeChat DevTools private config
+project.private.config.json
+
+# Dependencies
+miniprogram_npm/
+node_modules/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

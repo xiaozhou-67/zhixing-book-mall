@@ -1,0 +1,361 @@
+/* ========================================
+   我的收藏页面样式
+======================================== */
+
+page {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+page, view, image, input {
+  display: block;
+  box-sizing: border-box;
+}
+
+/* 文本省略（两行） */
+.ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+/* ========================================
+   页面主容器
+======================================== */
+
+.fav-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 24rpx 24rpx 160rpx; /* 底部留出浮动按钮空间 */
+  overflow: hidden;
+}
+
+/* ========================================
+   商品网格布局
+======================================== */
+
+.list2-box {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+/* ========================================
+   商品卡片
+======================================== */
+
+.list2 {
+  width: calc(50% - 15rpx);
+  background: #ffffff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 32rpx rgba(102, 126, 234, 0.18);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   商品图片区域
+======================================== */
+
+.img-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* 正方形 */
+  overflow: hidden;
+  background: #f5f5f5;
+  flex-shrink: 0;
+}
+
+.img-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.img-link:active .img {
+  transform: scale(1.04);
+}
+
+/* 图片右下角悬浮加购按钮（备用，当前主要用底部操作栏） */
+.card-cart-btn {
+  display: none; /* 已使用底部操作栏方案，此处隐藏 */
+}
+
+/* ========================================
+   商品信息
+======================================== */
+
+.goods-info {
+  padding: 16rpx 18rpx 10rpx;
+  flex: 1;
+}
+
+.title-link {
+  display: block;
+}
+
+.title {
+  color: #2d3748;
+  font-size: 24rpx;
+  /* line-height: 1.5; */
+  font-weight: 500;
+  /* min-height: 78rpx; */
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  margin-top: 8rpx;
+}
+
+.price-symbol {
+  font-size: 22rpx;
+  color: #e64340;
+  font-weight: 600;
+  margin-right: 2rpx;
+}
+
+.price-main {
+  font-size: 32rpx;
+  color: #e64340;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ========================================
+   底部操作栏
+======================================== */
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 16rpx 16rpx;
+  gap: 12rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+/* 仅有删除按钮时（第三方商品），居中对齐 */
+.card-actions--single {
+  justify-content: center;
+}
+
+/* 通用 action 按钮 */
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60rpx;
+  border-radius: 14rpx;
+  position: relative;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.action-btn:active {
+  transform: scale(0.92);
+  opacity: 0.75;
+}
+
+.action-icon {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+/* 删除按钮 — 方形，浅红背景 */
+.delete-btn {
+  width: 60rpx;
+  background: #fff0f0;
+  border: 1.5rpx solid #ffd0d0;
+  flex-shrink: 0;
+}
+
+.delete-btn .action-icon {
+  /* 使图标偏红色调 */
+  filter: invert(30%) sepia(80%) saturate(500%) hue-rotate(320deg);
+}
+
+/* 加入购物车按钮 — 弹性占满剩余宽度，渐变背景 */
+.add-cart-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  gap: 8rpx;
+  position: relative;
+  overflow: visible;
+}
+
+.cart-action-icon {
+  filter: brightness(0) invert(1); /* 白色图标 */
+}
+
+/* 加购按钮上的数量徽章 */
+.action-badge {
+  position: absolute;
+  top: -14rpx;
+  right: -10rpx;
+  background: #ff4444;
+  color: #ffffff;
+  font-size: 18rpx;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 32rpx;
+  height: 32rpx;
+  padding: 0 8rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3rpx solid #ffffff;
+  box-shadow: 0 2rpx 6rpx rgba(255, 68, 68, 0.5);
+  z-index: 10;
+}
+
+/* ========================================
+   底部加载状态
+======================================== */
+
+.load-more {
+  width: 100%;
+  text-align: center;
+  padding: 24rpx 0 8rpx;
+}
+
+.load-more-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1rpx;
+}
+
+.load-more-loading {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ========================================
+   空状态
+======================================== */
+
+.empty-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 40rpx;
+}
+
+.empty-card {
+  width: 100%;
+  max-width: 500rpx;
+  background: #ffffff;
+  border-radius: 32rpx;
+  padding: 80rpx 60rpx;
+  text-align: center;
+  box-shadow: 0 20rpx 60rpx rgba(102, 126, 234, 0.25);
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 32rpx;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20rpx) scale(1.05); }
+}
+
+.empty-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 16rpx;
+  letter-spacing: 1rpx;
+}
+
+.empty-desc {
+  font-size: 26rpx;
+  color: #a0aec0;
+  line-height: 1.6;
+}
+
+/* ========================================
+   右下角浮动购物车按钮
+======================================== */
+
+.float-cart {
+  position: fixed;
+  right: 36rpx;
+  bottom: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 28rpx rgba(102, 126, 234, 0.55);
+  z-index: 100;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: visible;
+}
+
+.float-cart:active {
+  transform: scale(0.9);
+  box-shadow: 0 4rpx 16rpx rgba(102, 126, 234, 0.4);
+}
+
+.float-cart-icon {
+  width: 48rpx;
+  height: 48rpx;
+  filter: brightness(0) invert(1); /* 白色图标 */
+}
+
+/* 浮动购物车的数量徽章 */
+.float-cart-badge {
+  position: absolute;
+  top: -8rpx;
+  right: -8rpx;
+  background: #ff4444;
+  color: #ffffff;
+  font-size: 20rpx;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 36rpx;
+  height: 36rpx;
+  padding: 0 8rpx;
+  border-radius: 18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3rpx solid #ffffff;
+  box-shadow: 0 2rpx 8rpx rgba(255, 68, 68, 0.6);
+  z-index: 101;
+}
+
+/* ========================================
+   响应式适配
+======================================== */
+
+@media screen and (max-width: 320px) {
+  .list2 {
+    width: 100%;
+  }
+  .title {
+    font-size: 24rpx;
+  }
+}
